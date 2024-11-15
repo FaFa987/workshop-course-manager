@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
-// TODO implement model
+
 public class Course {
     private int id;
     private String courseName;
@@ -15,12 +15,21 @@ public class Course {
     private int weekDuration;
     private Collection<Student> students;
 
-    public Course(String courseName, LocalDate startDate, int weekDuration) {
-        this.id = StudentSequencer.nextStudentId();
+    public Course() {
+        students = new ArrayList<>();
+    }
+
+    public Course(int id) {
+        this.id = id;
+        students = new ArrayList<>();
+    }
+
+    public Course(int id, String courseName, LocalDate startDate, int weekDuration, Collection<Student> students) {
+        this.id = id;
         this.courseName = courseName;
         this.startDate = startDate;
         this.weekDuration = weekDuration;
-        this.students = new ArrayList<>();
+        this.students = students;
     }
 
     public LocalDate getStartDate() {
@@ -50,17 +59,20 @@ public class Course {
     public void setStudents(Collection<Student> students) {
         this.students = students;
     }
+
     public boolean enrollStudent(Student student) {
-        if (students.contains(student)) {
-            return false;
-        } else if (student == null) {
-            return false;
+
+        boolean wasEnrolled = false;
+
+        if (student!= null && !students.contains(student)) {
+            wasEnrolled = students.add(student);
         }
-        this.students.add(student);
-        return true;
+
+        return wasEnrolled;
     }
-    public boolean unenrollStudent(Student student) {
-        return this.students.remove(student);
+
+    public boolean unEnrollStudent(Student student) {
+            return this.students.remove(student);
     }
 
     @Override
