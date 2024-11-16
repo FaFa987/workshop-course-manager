@@ -30,4 +30,12 @@ public class StudentCollectionRepositoryTest {
         testObject.clear();
         StudentSequencer.setStudentSequencer(0);
     }
+
+    @Test
+    void createStudent() {
+    }
+
+    @Test
+    void findById() {
+    }
 }

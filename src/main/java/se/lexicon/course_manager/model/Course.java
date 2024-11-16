@@ -2,13 +2,14 @@ package se.lexicon.course_manager.model;
 
 import se.lexicon.course_manager.data.sequencers.StudentSequencer;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
 
-public class Course {
+public class Course implements Serializable {
     private int id;
     private String courseName;
     private LocalDate startDate;
