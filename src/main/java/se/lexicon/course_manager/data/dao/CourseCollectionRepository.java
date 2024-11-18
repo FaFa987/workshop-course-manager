@@ -3,6 +3,7 @@ package se.lexicon.course_manager.data.dao;
 
 
 import se.lexicon.course_manager.model.Course;
+import se.lexicon.course_manager.model.Student;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -54,7 +55,18 @@ public class CourseCollectionRepository implements CourseDao{
 
     @Override
     public Collection<Course> findByStudentId(int studentId) {
-        return null;
+
+        Collection<Course> coursesForSpecificStudent = new HashSet<>();
+
+        for (Course course : courses) {
+            for (Student s : course.getStudents()) {
+                if (s.getId() == studentId) {
+                    coursesForSpecificStudent.add(course);
+                }
+            }
+        }
+
+        return coursesForSpecificStudent;
     }
 
     @Override

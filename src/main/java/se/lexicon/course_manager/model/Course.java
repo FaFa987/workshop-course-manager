@@ -17,7 +17,7 @@ public class Course implements Serializable {
     private Collection<Student> students;
 
     public Course() {
-        students = new ArrayList<>();
+
     }
 
     public Course(int id) {
